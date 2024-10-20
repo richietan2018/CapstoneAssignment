@@ -90,9 +90,11 @@ def get_requirements_recommendations(input, url):
             description="""\
                 Using the input by the buyer and housing details gathered from previous tasks, produce if is viable for user selection 
                 Show the relevant details if it matches and give information such as the town/area, room flat type, nearby ammenities and housing years left.
-                Tell the buyer why buy this house and why it is the dreamhouse.""",
+                Tell the buyer why buy this house and why it is the dreamhouse.
+
+                If there is no valuable details gathered from the housing details gathered from previous homeResearchAgent, reject the buyer nicely and seek for buyer assistance to provide an link. """,
             expected_output=
-                "An output that return if he/she should buyer the house and reason why it matches it dream house. The output should give a grading out of 5 stars on if the house matches the buyer dream house. ",
+                "An output that return if he/she should buyer the house and reason why it matches it dream house. The output should give a grading out of 5 stars on if the house matches the buyer dream house only when research_task is given a link to analyse. ",
             
             #output_file="tailored_resume.md",
             

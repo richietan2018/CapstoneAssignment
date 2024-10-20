@@ -24,23 +24,36 @@ st.title("Requirement's & Recommendation's")
 
 userInput = ""
 
-st.write("Step 1: You may choose to upload the details of your dream house OR enter the details into the box below.")
+#Upload details or enter details 
+detailsType = st.radio(
+    "Will you like to enter your dream house details or Upload your dream house details?",
+    ["Enter mine/our dream house details","Upload mine/our dream house details"],
+    index=None,
+)
+st.write("You selected:", detailsType)
+st.divider()
 
-col1, col2 = st.columns(2)
-
-with col1:
+if (detailsType == "Enter mine/our dream house details"):
     form = st.form(key="form")
-    user_prompt = form.text_area("Enter dream house details!", height=50
+    user_prompt = form.text_area("**Step 1: Enter dream house details!**", height=50
             , placeholder="I love to stay in Punggol! Best to be near MRT Station")
+    userInput = user_prompt
 
+    url = form.text_area("**Step 2: Enter the house link to check if is dream home**", height=20
+            , placeholder="https://www.propnex.com/listing-details/575251/413a-fernvale-link")
+    
     if form.form_submit_button("Submit"):
-        st.toast(f"Your input - {user_prompt} as been submitted. Please give us a moment.")
-        userInput = user_prompt
-        #rawResults,homeResearchAgentReplies, buyerDreamAgentReplies, housing_agentReplies = get_requirements_recommendations(user_prompt)
-        #st.write(rawResults)
+        if userInput == "" or url == "":
+            st.error("All fields are mandatory.")
+        else:
+            st.toast(f"Your input - {url} as been submitted. Please give us a moment.")
+            st.divider()
+            rawResults,homeResearchAgentReplies, buyerDreamAgentReplies, housing_agentReplies = get_requirements_recommendations(userInput,url)
+            st.write(rawResults)
 
-with col2:
-    uploaded_file = st.file_uploader("Upload the details of your dream house!")
+
+elif (detailsType == "Upload mine/our dream house details"):
+    uploaded_file = st.file_uploader("**Step 1: Upload the details of your dream house!**")
     if uploaded_file is not None:
         # To convert to a string based IO:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
@@ -50,22 +63,20 @@ with col2:
         input = stringio.read()
 
         userInput = input
-        #rawResults,homeResearchAgentReplies, buyerDreamAgentReplies, housing_agentReplies = get_requirements_recommendations(input)
-        #st.write(rawResults)
 
-st.divider()
+    form = st.form(key="form")
+    url = form.text_area("**Step 2: Enter the house link to check if is dream home**", height=20
+            , placeholder="https://www.propnex.com/listing-details/575251/413a-fernvale-link")
+    
+    if form.form_submit_button("Submit"):
+        if userInput == "" or url == "":
+            st.error("All fields are mandatory.")
+        else:
+            st.toast(f"Your input - {url} as been submitted. Please give us a moment.")
+            st.divider()
+            rawResults,homeResearchAgentReplies, buyerDreamAgentReplies, housing_agentReplies = get_requirements_recommendations(userInput,url)
+            st.write(rawResults)
 
-st.write("Step 2: Enter the house link to check if is dream home")
-
-form1 = st.form(key="form1")
-url = form1.text_area("Enter the dream house link", height=20
-                        , placeholder="https://www.propnex.com/listing-details/575251/413a-fernvale-link")
-
-if form1.form_submit_button("Submit"):
-    st.toast(f"Your input - {url} as been submitted. Please give us a moment.")
-    st.divider()
-    rawResults,homeResearchAgentReplies, buyerDreamAgentReplies, housing_agentReplies = get_requirements_recommendations(userInput,url)
-    st.write(rawResults)
 
 #FOOTER
 st.divider()
