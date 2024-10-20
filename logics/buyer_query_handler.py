@@ -150,8 +150,8 @@ def process_buyer_message(user_input):
     reply = generate_response_based_on_result_details(user_input, result_details)
     print(reply)
     
-    if reply == "" and result_details == "":
-        reply="Your question is invalid for our discussion here. Kindly ask questions related to resale housing."
+    #if reply == "" and result_details == "":
+    #    reply="Your question is invalid for our discussion here. Kindly ask questions related to resale housing."
     
     #return result_details
     return reply, result_details
