@@ -28,7 +28,7 @@ st.markdown("1. Resale flat prices based on registration date from Jan-2017 onwa
 st.markdown("Link: https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view")
 st.markdown("")
 
-st.markdown("**Use Case 3:** Enquiry on resale flat pricing and records")
+st.markdown("**Use Case 3:** Requirements and recommendation")
 st.markdown("1. Depends on user input- eg. Propnex site, other site do not allow the retrieve of data.")
 st.divider()
 st.subheader("Features")

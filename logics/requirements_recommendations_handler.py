@@ -86,7 +86,7 @@ def get_requirements_recommendations(input, url):
 
         
         # Task for Resume Strategy Task: Align Dream House with Housing Available.
-        resume_strategy_task = Task(
+        strategy_task = Task(
             description="""\
                 Using the input by the buyer and housing details gathered from previous tasks, produce if is viable for user selection 
                 Show the relevant details if it matches and give information such as the town/area, room flat type, nearby ammenities and housing years left.
@@ -109,7 +109,7 @@ def get_requirements_recommendations(input, url):
 
         tasks=[research_task,
             buyer_dream_task,
-            resume_strategy_task],
+            strategy_task],
 
         verbose=True
         )

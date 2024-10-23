@@ -146,7 +146,7 @@ def process_buyer_message(user_input):
     # Process 2: Get the list of areas with Details
     result_details = get_town_details(town_n_flattype)
 
-    # Process 3: Generate Response based on Course Details
+    # Process 3: Generate Response based on House Details
     reply = generate_response_based_on_result_details(user_input, result_details)
     print(reply)
     
