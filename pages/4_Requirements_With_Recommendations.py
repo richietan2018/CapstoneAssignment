@@ -36,11 +36,11 @@ st.divider()
 if (detailsType == "Enter mine/our dream house details"):
     form = st.form(key="form")
     user_prompt = form.text_area("**Step 1: Enter dream house details!**", height=50
-            , placeholder="I love to stay in Punggol! Best to be near MRT Station")
+            , placeholder="I will love to stay in Punggol, best to be near MRT Station and nearby should have primary schools.")
     userInput = user_prompt
 
     url = form.text_area("**Step 2: Enter the house link to check if is dream home**", height=20
-            , placeholder="https://www.propnex.com/listing-details/575251/413a-fernvale-link")
+            , placeholder="https://www.propnex.com/listing-details/578521/272a-punggol-walk")
     
     if form.form_submit_button("Submit"):
         if userInput == "" or url == "":
