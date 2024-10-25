@@ -96,8 +96,6 @@ def get_requirements_recommendations(input, url):
             expected_output=
                 "An output that return if he/she should buyer the house and reason why it matches it dream house. The output should give a grading out of 5 stars on if the house matches the buyer dream house only when research_task is given a link to analyse. ",
             
-            #output_file="tailored_resume.md",
-            
             context=[research_task, buyer_dream_task],
             agent=housing_agent
         )
@@ -120,7 +118,7 @@ def get_requirements_recommendations(input, url):
     }
 
 
-        ### this execution will take a few minutes to run
+        ### this execution will take awhile to run
         result = crew.kickoff(inputs=housing_listing_inputs)
         rawResults = result.raw
         homeResearchAgentReplies = result.tasks_output[0]
